@@ -1,0 +1,10 @@
+bazel-bin
+bazel-out
+bazel-testlogs
+bazel-wengraph
+
+venv
+
+.DS_Store
+
+.idea
