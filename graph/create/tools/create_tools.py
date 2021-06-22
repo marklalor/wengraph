@@ -2,6 +2,7 @@ import sqlite3
 import argparse
 from os.path import basename
 
+
 def get_argparse():
     parser = argparse.ArgumentParser(description='Create SQL base')
     parser.add_argument("--schema-definitions", nargs='*', default=[])
@@ -9,11 +10,13 @@ def get_argparse():
     parser.add_argument("--output")
     return parser
 
+
 def get_tools():
     args = get_argparse().parse_args()
     inputs = {basename(filepath): filepath for filepath in args.inputs}
     cursor, dump = get_sql_writer()
-    return inputs, cursor, dump
+    return inputs, cursor.executemany, dump
+
 
 def get_sql_writer():
     args = get_argparse().parse_args()
